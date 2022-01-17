@@ -29,6 +29,8 @@ Explanation: The two lists do not intersect, so return null.
  * };
  */
 
+// Method 1:  O(n^2)
+
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
@@ -45,6 +47,64 @@ public:
                 temp=temp->next;
             }
             headA=headA->next;
+        }
+        
+        return nullptr;
+    }
+};
+
+
+// Method 2:  O(n)
+
+class Solution {
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        if(headA==NULL || headB==NULL)
+            return nullptr;
+        
+        ListNode *temp1=headA, *temp2=headB;
+        int sizeA=0, sizeB=0;
+        
+        while(temp1)
+        {
+            sizeA++;
+            temp1=temp1->next;
+        }
+        
+        while(temp2)
+        {
+            sizeB++;
+            temp2=temp2->next;
+        }
+        
+        int diff = abs(sizeA-sizeB);
+        temp1=headA;
+        temp2=headB;
+        
+        if(sizeA > sizeB)
+        {
+            while(diff!=0)
+            {
+                diff--;
+                temp1=temp1->next;
+            }
+        }
+        else
+        {
+            while(diff!=0)
+            {
+                diff--;
+                temp2=temp2->next;
+            }
+        }
+        
+        while(temp1 && temp2)
+        {
+            if(temp1==temp2)
+                return temp1;
+            
+            temp1=temp1->next;
+            temp2=temp2->next;
         }
         
         return nullptr;
