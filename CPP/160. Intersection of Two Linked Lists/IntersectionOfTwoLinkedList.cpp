@@ -1,4 +1,4 @@
-//Source: https://leetcode.com/problems/merge-two-sorted-lists/
+//Source: https://leetcode.com/problems/intersection-of-two-linked-lists/
 //Author: Himanshu Agarwal
 //Date:   17/01/22
 
