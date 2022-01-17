@@ -1,4 +1,4 @@
-//Source: https://leetcode.com/problems/merge-two-sorted-lists/
+//Source: https://leetcode.com/problems/linked-list-cycle/
 //Author: Himanshu Agarwal
 //Date:   16/01/22
 
