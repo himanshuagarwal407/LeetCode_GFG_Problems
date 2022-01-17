@@ -1,4 +1,4 @@
-//Source: https://leetcode.com/problems/merge-two-sorted-lists/
+//Source: hhttps://leetcode.com/problems/remove-duplicates-from-sorted-list/
 //Author: Himanshu Agarwal
 //Date:   16/01/22
 
