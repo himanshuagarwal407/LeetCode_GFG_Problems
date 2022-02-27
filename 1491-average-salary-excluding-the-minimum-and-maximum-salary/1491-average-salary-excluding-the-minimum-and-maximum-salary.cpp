@@ -13,8 +13,7 @@ public:
         }
         
         sum=sum-(max+min);
-        double avg = (double)sum/(salary.size()-2);
         
-        return avg;
+        return (double)sum/(salary.size()-2);
     }
 };
