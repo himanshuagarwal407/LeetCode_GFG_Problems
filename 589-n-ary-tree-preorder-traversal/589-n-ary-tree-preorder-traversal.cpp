@@ -20,15 +20,31 @@ public:
 
 class Solution {
 public:
-    vector<int> preOrder;
     vector<int> preorder(Node* root) {
+        vector<int> ans;
+        
         if(!root)
-            return preOrder;
+            return ans;
         
-        preOrder.push_back(root->val);
-        for(int i=0; i<root->children.size(); i++)
-            preorder(root->children[i]);
+        stack<Node*> st;
+        st.push(root);
         
-        return preOrder;
+        while(!st.empty())
+        {
+            Node* temp=st.top();
+            st.pop();
+            
+            ans.push_back(temp->val);
+            vector<Node*> child = temp->children;
+            int i=child.size()-1;
+            
+            while(i>=0)
+            {
+                st.push(child[i]);
+                i--;
+            }
+        }
+        
+        return ans;
     }
 };
