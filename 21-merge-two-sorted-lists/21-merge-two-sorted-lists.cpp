@@ -19,19 +19,19 @@ public:
         ListNode* temp = new ListNode();
         ListNode* head = temp;
         
-        if(temp==NULL)
-        {
-            if(list1->val <= list2->val)
-            {
-                temp=list1;
-                list1=list1->next;
-            }
-            else
-            {
-                temp=list2;
-                list2=list2->next;
-            }
-        }
+        // if(temp==NULL)
+        // {
+        //     if(list1->val <= list2->val)
+        //     {
+        //         temp=list1;
+        //         list1=list1->next;
+        //     }
+        //     else
+        //     {
+        //         temp=list2;
+        //         list2=list2->next;
+        //     }
+        // }
         
         while(list1!=NULL && list2!=NULL)
         {
