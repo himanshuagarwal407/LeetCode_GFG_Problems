@@ -6,17 +6,18 @@ public:
         
         k = k%(n*m);
         
-//         if(k>=n)
-//         {
-//             k=k%n;
-//             int x=k/n;
+        if(k>=m)
+        {
             
-//             for(int i=0; i<x; i++)
-//             {
-//                 grid.insert(grid.begin(), grid[n-1]);
-//                 grid.pop_back();
-//             }
-//         }
+            int x=k/m;
+            k=k%m;
+            
+            for(int i=0; i<x; i++)
+            {
+                grid.insert(grid.begin(), grid[n-1]);
+                grid.pop_back();
+            }
+        }
         while(k--)
         {
             grid[0].insert(grid[0].begin(), grid[n-1][m-1]);
