@@ -1,29 +1,18 @@
 class Solution {
 public:
-    void helper(vector<int>&coins,vector<int>&dp ){
-        dp[0]=0;
+    int coinChange(vector<int>& coins, int amount) {
+        vector<int> h(amount+1, INT_MAX-1);
+        h[0]=0;
         
-        for(int i=1;i<10001;i++) 
+        for(int i=0; i<h.size(); i++)
         {
-            for(int j=0;j<coins.size();j++) 
+            for(int j=0; j<coins.size(); j++)
             {
-                if(coins[j]<=i)
-                {
-                    if(dp[i-coins[j]]!=INT_MAX)
-                        dp[i]=min(dp[i],dp[i-coins[j]]+1);
-                }
+                if(i>=coins[j] )
+                    h[i]=min(h[i], 1+h[i-coins[j]]);
             }
         }
-    }
-    
-    int coinChange(vector<int>& coins, int amount) {
-        vector<int>dp(10001,INT_MAX);
-        sort(begin(coins),end(coins));
         
-        helper(coins,dp);
-        if(dp[amount]==INT_MAX)
-            return -1;
-
-        return dp[amount];
+        return (h[h.size()-1] < INT_MAX-1)? h[h.size()-1] : -1;
     }
 };
