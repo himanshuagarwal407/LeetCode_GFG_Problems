@@ -1,28 +1,50 @@
 class Solution {
 public:
-    void setZeroes(vector<vector<int>>& mat) {
-        int n=mat.size();
-        int m=mat[0].size();
-        
-        vector<pair<int, int>> v;
-        for(int i=0; i<n; i++)
+    void setZeroes(vector<vector<int>>& matrix) {
+        bool isCol = false;
+        int R = matrix.size();
+        int C = matrix[0].size();
+
+        for (int i = 0; i < R; i++) 
         {
-            for(int j=0; j<m; j++)
+          if (matrix[i][0] == 0)
+            isCol = true;
+
+          for (int j = 1; j < C; j++) 
+          {
+            if (matrix[i][j] == 0)
             {
-                if(mat[i][j]==0)
-                    v.push_back({i, j});
+                matrix[0][j] = 0;
+                matrix[i][0] = 0;
             }
+          }
         }
-        
-        for(int i=0; i<v.size(); i++)
+
+        for (int i = 1; i < R; i++) 
         {
-            int row=v[i].first;
-            int col=v[i].second;
-            
-            for(int j=0; j<m; j++)
-                mat[row][j]=0;
-            for(int j=0; j<n; j++)
-                mat[j][col]=0;
+          for (int j = 1; j < C; j++) 
+          {
+            if (matrix[i][0] == 0 || matrix[0][j] == 0) 
+            {
+              matrix[i][j] = 0;
+            }
+          }
+        }
+
+        if (matrix[0][0] == 0) 
+        {
+          for (int j = 0; j < C; j++) 
+          {
+            matrix[0][j] = 0;
+          }
+        }
+
+        if (isCol) 
+        {
+          for (int i = 0; i < R; i++) 
+          {
+            matrix[i][0] = 0;
+          }
         }
         
     }
