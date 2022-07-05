@@ -5,7 +5,7 @@ public:
         if(n==0)
             return 0;
         
-        unordered_set<int> st;
+        set<int> st;
         
         for(auto x:nums)
             st.insert(x);
