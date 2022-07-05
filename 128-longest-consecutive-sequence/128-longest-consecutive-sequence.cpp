@@ -5,19 +5,28 @@ public:
         if(n==0)
             return 0;
         
-        int len=1, maxLen=1;
+        unordered_set<int> st;
         
-        sort(nums.begin(), nums.end());
-        for(int i=1; i<n; i++)
+        for(auto x:nums)
+            st.insert(x);
+        
+        int maxLen=0;
+        
+        for(int x:st)
         {
-            if(nums[i]==nums[i-1])
-                continue;
-            if(nums[i]==nums[i-1]+1)
-                len++;
-            else
-                len=1;
-            
-            maxLen=max(len, maxLen);
+            if(st.find(x-1)==st.end())
+            {
+                int currx=x;
+                int len=1;
+                
+                while(st.find(currx+1)!=st.end())
+                {
+                    currx+=1;
+                    len+=1;
+                }
+                
+                maxLen=max(len, maxLen);
+            }
         }
         
         return maxLen;
