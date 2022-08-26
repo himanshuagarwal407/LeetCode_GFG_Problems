@@ -4,14 +4,14 @@ public:
         string s=to_string(n);
         sort(s.begin(), s.end());
         
-        vector<string> power;
         for(int i=0; i<=30; i++)
         {
             int p=pow(2, i);
-            power.push_back(to_string(p));
-            sort(power[i].begin(), power[i].end());
+            string x=to_string(p);
             
-            if(s==power[i])
+            sort(x.begin(), x.end());
+            
+            if(s==x)
                 return true;
         }
             
