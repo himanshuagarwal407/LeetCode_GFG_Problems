@@ -2,12 +2,13 @@ class Solution {
 public:
     int hammingWeight(uint32_t n) {
         int count=0;
-        while(n)
+        
+        for(int i=0; i<32; i++)
         {
-            int m=n%2;
-            if(m==1)
+            if(n&1)
                 count++;
-            n=n/2;
+            
+            n=n>>1;
         }
         
         return count;
