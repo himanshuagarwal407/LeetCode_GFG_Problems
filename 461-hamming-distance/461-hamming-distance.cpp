@@ -19,19 +19,14 @@ public:
         
         while(x!=0 && y!=0)
         {
-            // cout << x << " " << y << endl;
-            
             auto a = x&1, b=y&1;
             if(a != b)
-            {
                 count++;
-                // cout << "yes" << endl;
-            }
             
             x=x>>1;
             y=y>>1;
         }
-        // cout << count ;
+        
         if(y!=0)
             count+=setBits(y);
         if(x!=0)
