@@ -17,7 +17,6 @@ public:
             {
                 power+=tokens[r--];
                 score--;
-                ans=max(ans, score);
             }
             else
                 break;
