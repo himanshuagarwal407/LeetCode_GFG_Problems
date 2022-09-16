@@ -4,13 +4,12 @@ public:
     {
         if(ind==m)
             return 0;
-        
-        int r=n-1-(ind-l);   
+           
         if(dp[l][ind]!=INT_MIN)
             return dp[l][ind];
         
         int a = nums[l]*multi[ind] + solve(nums, multi, l+1, n, ind+1, m, dp);
-        int b = nums[r]*multi[ind] + solve(nums, multi, l, n, ind+1, m, dp);
+        int b = nums[n-1-(ind-l)]*multi[ind] + solve(nums, multi, l, n, ind+1, m, dp);
         
         return dp[l][ind]=max(a, b);
     }
