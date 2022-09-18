@@ -2,21 +2,25 @@ class Solution {
 public:
     int trap(vector<int>& h) {
         int n=h.size();
-        
-        vector<int> lm(n);
-        vector<int> rm(n);
-        
-        lm[0]=h[0];
-        rm[n-1]=h[n-1];
-        
-        for(int i=1; i<n; i++)
-            lm[i] = max(lm[i-1], h[i]);
-        for(int i=n-2; i>=0; i--)
-            rm[i] = max(rm[i+1], h[i]);
-        
         int ans=0;
+        stack<int> st;
         for(int i=0; i<n; i++)
-            ans += min(lm[i], rm[i])-h[i];
+        {
+            while(!st.empty() && h[i]>h[st.top()])
+            {
+                int top = st.top();
+                st.pop();
+                
+                if(st.empty())
+                    break;
+                int dis = i-st.top()-1;
+                int hei = min(h[i], h[st.top()])-h[top];
+                
+                ans += dis*hei;
+            }
+            
+            st.push(i);
+        }
         
         return ans;
     }
